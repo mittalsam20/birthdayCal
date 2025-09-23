@@ -1,0 +1,66 @@
+// GLOBAL STYLES
+@use "Colors.scss";
+@use "Typography.scss";
+@use "Normalize.scss";
+
+:global {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    ::selection {
+      color: initial;
+      background: $bgPrimary;
+    }
+  }
+
+  body {
+    @include regularFont();
+    @include fontSize(1.4rem);
+    color: $textDefault;
+    background-color: $bgWhite;
+    line-height: normal;
+    font-family: Galvji;
+  }
+  *:before,
+  *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+  }
+  #root {
+    background: $bgWhite;
+    height: 100%;
+    width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background: $bgDarkHover;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $bgPrimary;
+  border-radius: 8px;
+}

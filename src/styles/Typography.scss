@@ -1,0 +1,25 @@
+$fontScalingFactor: 0.625;
+
+@mixin fontSize($baseSize) {
+  font-size: $baseSize * $fontScalingFactor;
+}
+
+@mixin regularFont {
+  font-weight: 400;
+}
+
+@mixin mediumFont {
+  font-weight: 500;
+}
+
+@mixin demiBoldFont {
+  font-weight: 600;
+}
+
+@mixin boldFont {
+  font-weight: 700;
+}
+
+@mixin abel {
+  font-family: Abel;
+}
