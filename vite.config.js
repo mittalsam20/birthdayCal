@@ -11,13 +11,12 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-        @use "Colors.scss" as *;
-        @use "Mixins.scss" as *;
-        @use "Typography.scss" as *;
+        @use "@styles/Colors.scss" as *;
+        @use "@styles/Mixins.scss" as *;
+        @use "@styles/Typography.scss" as *;
       `,
         sourceMap: true,
         outputStyle: "expanded",
-        includePaths: [resolve(__dirname, "src/styles")],
       },
     },
     modules: {

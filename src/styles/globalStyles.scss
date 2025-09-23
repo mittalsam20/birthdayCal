@@ -1,7 +1,5 @@
 // GLOBAL STYLES
-@use "Colors.scss";
-@use "Typography.scss";
-@use "Normalize.scss";
+@use "./normalize.scss";
 
 :global {
   html,
