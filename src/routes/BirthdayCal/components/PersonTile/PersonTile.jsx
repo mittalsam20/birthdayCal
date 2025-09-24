@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useMemo } from "react";
 import classes from "./PersonTile.module.scss";
 import { getNameInitials, getColorFromName } from "@utils/HelperFunctions";
 
 const PersonTile = props => {
   const { name = "" } = props;
 
-  // will use birthday in tooltip
-  const initials = getNameInitials({ fullName: name });
-  const backgroundColor = getColorFromName({ name });
+  const initials = useMemo(() => getNameInitials({ fullName: name }), [name]);
+  const backgroundColor = useMemo(() => getColorFromName({ name }), [name]);
 
   return (
     <div className={classes.personTile} style={{ backgroundColor }}>

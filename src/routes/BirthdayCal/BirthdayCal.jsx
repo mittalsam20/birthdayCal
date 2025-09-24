@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 
 import { Box } from "@/UIComponents";
 import { DAYS, MOCK_BIRTHDAYS_DATA } from "@/constants/stringConstants";
@@ -37,11 +37,12 @@ const BirthdayCal = () => {
   const { usersRawText, selectedYear } = formData;
   const { usersJson, selectedYear: processedYear } = processedData;
 
-  const handleFormData = name => value => {
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  const handleFormData = useCallback(
+    name => value => setFormData(prev => ({ ...prev, [name]: value })),
+    []
+  );
 
-  const onClickProcess = () => {
+  const onClickProcess = useCallback(() => {
     try {
       const parsedUsers = JSON.parse(usersRawText.trim());
       setProcessedData({ usersJson: parsedUsers, selectedYear });
@@ -49,21 +50,29 @@ const BirthdayCal = () => {
     } catch (error) {
       alert("Invalid JSON format");
     }
-  };
+  }, [usersRawText, selectedYear]);
 
-  const personsByBirthdayDay = groupPeopleByBirthdayDay({
-    users: usersJson,
-    selectedYear: processedYear,
-  });
+  const personsByBirthdayDay = useMemo(
+    () => groupPeopleByBirthdayDay({ users: usersJson, selectedYear: processedYear }),
+    [usersJson, processedYear]
+  );
+
+  const dayCards = useMemo(
+    () =>
+      DAYS.map(day => {
+        const cardTitle = getCardTitleFromDay({ day });
+        const persons = personsByBirthdayDay[day] || [];
+        return { day, cardTitle, persons };
+      }),
+    [personsByBirthdayDay]
+  );
 
   return (
     <div className={classes.pageContainer}>
       <Box className={classes.dayCardsContainer} isRowAligned={true}>
-        {DAYS.map(day => {
-          const cardTitle = getCardTitleFromDay({ day });
-          const persons = personsByBirthdayDay[day] || [];
-          return <DayCard key={day} title={cardTitle} persons={persons} />;
-        })}
+        {dayCards.map(({ day, cardTitle, persons }) => (
+          <DayCard key={day} title={cardTitle} persons={persons} />
+        ))}
       </Box>
 
       <div className={classes.formContainer}>

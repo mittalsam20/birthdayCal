@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import classNames from "classnames";
 
 import classes from "./DayCard.module.scss";
@@ -31,9 +31,9 @@ const DayCard = props => {
   const { title = "", persons = [] } = props;
   const numberOfTiles = persons.length;
   const isEmpty = numberOfTiles === 0;
-  const containerStyle = getContainerStyle({ numberOfTiles });
+  const sortedPersons = useMemo(() => getSortedPersons({ persons }), [persons]);
+  const containerStyle = useMemo(() => getContainerStyle({ numberOfTiles }), [numberOfTiles]);
 
-  const sortedPersons = getSortedPersons({ persons });
   const bodyContainerClass = classNames({
     [classes.cardBodyContainer]: true,
     [classes.cardBodyContainerEmpty]: isEmpty,
