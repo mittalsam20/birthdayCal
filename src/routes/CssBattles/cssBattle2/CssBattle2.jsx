@@ -1,13 +1,13 @@
 import React from "react";
-import "./CssBattle2.scss";
+import classes from "./CssBattle2.module.scss";
 
 const CssBattle2 = () => {
   return (
-    <div className="stage">
-      <div className="half y top"></div>
-      <div className="half r top on-top"></div>
-      <div className="half y bot on-top"></div>
-      <div className="half r bot"></div>
+    <div className={classes.stage}>
+      <div className={`${classes.half} ${classes.y} ${classes.top}`} />
+      <div className={`${classes.half} ${classes.r} ${classes.top} ${classes.onTop}`} />
+      <div className={`${classes.half} ${classes.y} ${classes.bot} ${classes.onTop}`} />
+      <div className={`${classes.half} ${classes.r} ${classes.bot}`} />
     </div>
   );
 };
