@@ -1,6 +1,7 @@
 .textArea {
-  height: 240px;
-  min-width: 50%;
+  height: 300px;
+  max-height: 300px;
+  min-width: 400px;
   font-size: 14px;
   color: $textDefault;
   padding: 12px 16px;
@@ -15,24 +16,11 @@
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
   }
 
-  &:hover:not(:disabled) {
-    border-color: $borderDarkSubtle;
-  }
-
-  &::placeholder {
-    color: $textDisabled;
-    opacity: 1;
-  }
-
   &.textAreaDisabled {
     background-color: $bgDisabled;
     border-color: $borderLightSubtle;
     color: $textDisabled;
     cursor: not-allowed;
     resize: none;
-
-    &::placeholder {
-      color: $textDisabled;
-    }
   }
 }

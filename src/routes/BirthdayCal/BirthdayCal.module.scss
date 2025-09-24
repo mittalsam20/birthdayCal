@@ -2,17 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 40px;
-  min-height: 100vh;
   width: 100%;
-  padding: 40px 20px;
+  gap: 40px;
 }
 
 .dayCardsContainer {
   gap: 12px;
   align-items: center;
   justify-content: flex-start;
+  width: 96%;
   padding: 16px;
   background-color: white;
   border-radius: 12px;
@@ -20,16 +18,16 @@
 
 .formContainer {
   display: flex;
-  width: 100%;
   gap: 12px;
 }
 
 .goButton {
   width: 100px;
   height: 40px;
+  padding: 0 16px;
   background-color: $bgPrimary;
   color: $textWhite;
-  border-radius: 12px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
 }

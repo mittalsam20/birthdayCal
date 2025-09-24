@@ -9,7 +9,7 @@ const PersonTile = props => {
   const backgroundColor = getColorFromName({ name });
 
   return (
-    <div className={classes.personCard} style={{ backgroundColor }}>
+    <div className={classes.personTile} style={{ backgroundColor }}>
       {initials}
     </div>
   );

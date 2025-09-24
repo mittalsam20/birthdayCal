@@ -7,26 +7,25 @@
     margin: 0;
     padding: 0;
     height: 100%;
+    overflow: hidden;
+    background-color: $bgWhite;
+
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
+    color: $textDefault;
+    line-height: normal;
+    font-family: Galvji;
+    @include regularFont();
+    @include fontSize(1.4rem);
+
     ::selection {
       color: initial;
       background: $bgPrimary;
     }
   }
 
-  body {
-    @include regularFont();
-    @include fontSize(1.4rem);
-    color: $textDefault;
-    background-color: $bgWhite;
-    line-height: normal;
-    font-family: Galvji;
-    overflow: hidden;
-  }
   *:before,
   *:after {
     -webkit-box-sizing: border-box;

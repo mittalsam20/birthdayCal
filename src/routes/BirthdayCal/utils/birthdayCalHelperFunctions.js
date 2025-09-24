@@ -12,7 +12,6 @@ export const getBirthdayDayByYear = ({ birthdate, selectedYear }) => {
 
 export const groupPeopleByBirthdayDay = ({ users = [], selectedYear }) => {
   if (!Array.isArray(users) || !selectedYear) return {};
-
   return users.reduce((acc, person) => {
     const { name, birthday } = person;
     if (!birthday || !name) return acc;
@@ -20,6 +19,7 @@ export const groupPeopleByBirthdayDay = ({ users = [], selectedYear }) => {
       const dayName = getBirthdayDayByYear({ birthdate: birthday, selectedYear });
       if (acc[dayName]) acc = { ...acc, [dayName]: [...acc[dayName], person] };
       else acc[dayName] = [person];
+      // eslint-disable-next-line no-unused-vars
     } catch (error) {
       console.warn(`Invalid birthday date for ${name}: ${birthday}`);
     }
@@ -32,4 +32,9 @@ export const getAllYearsTillCurrentYear = () => {
   const currentYear = getCurrentYear();
   for (let year = START_YEAR; year <= currentYear; year++) years = [...years, year];
   return years;
+};
+
+export const getYearsOptions = ({ years }) => {
+  const yearsOptions = years.map(year => ({ value: year, label: year }));
+  return yearsOptions;
 };

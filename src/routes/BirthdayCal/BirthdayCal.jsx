@@ -2,19 +2,23 @@ import React, { useState } from "react";
 
 import { Box } from "@/UIComponents";
 import { DAYS } from "@/constants/stringConstants";
-import { SAMPLE_BIRTHDAYS } from "@/constants/sampleData";
 
-import DayCard from "./components/DayCard";
-import classes from "./BirthdayCal.module.scss";
-import { TextArea, Select } from "@/UIComponents";
 import {
   getCurrentYear,
+  getYearsOptions,
   groupPeopleByBirthdayDay,
   getAllYearsTillCurrentYear,
 } from "./utils/birthdayCalHelperFunctions";
+import DayCard from "./components/DayCard";
+import classes from "./BirthdayCal.module.scss";
+import { TextArea, Select } from "@/UIComponents";
+
+const getCardTitleFromDay = ({ day }) => {
+  return day.slice(0, 3);
+};
 
 const years = getAllYearsTillCurrentYear();
-const yearsOptions = years.map(year => ({ value: year, label: year }));
+const yearsOptions = getYearsOptions({ years });
 
 const initialFormData = {
   usersJson: [],
@@ -40,7 +44,7 @@ const BirthdayCal = () => {
     <div className={classes.pageContainer}>
       <Box className={classes.dayCardsContainer} isRowAligned={true}>
         {DAYS.map(day => {
-          const cardTitle = day.slice(0, 3);
+          const cardTitle = getCardTitleFromDay({ day });
           const persons = personsByBirthdayDay[day] || [];
           return <DayCard key={day} title={cardTitle} persons={persons} />;
         })}
@@ -50,7 +54,7 @@ const BirthdayCal = () => {
         <TextArea
           name={"usersRawText"}
           value={usersRawText}
-          placeholder="Paste users data"
+          placeholder={"Paste users data"}
           onChange={handleFormData("usersRawText")}
         />
         <Select
