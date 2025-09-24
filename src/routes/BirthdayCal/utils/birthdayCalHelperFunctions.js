@@ -5,7 +5,8 @@ export const getCurrentYear = () => {
 };
 
 export const getBirthdayDayByYear = ({ birthdate, selectedYear }) => {
-  const [day, month] = birthdate.split("/").map(str => Number(str));
+  // eslint-disable-next-line no-unused-vars
+  const [year, month, day] = birthdate.split("/").map(str => Number(str));
   const date = new Date(selectedYear, month - 1, day);
   return DAYS[date.getDay()];
 };

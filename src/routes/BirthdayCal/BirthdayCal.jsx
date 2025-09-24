@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Box } from "@/UIComponents";
-import { DAYS } from "@/constants/stringConstants";
+import { DAYS, MOCK_BIRTHDAYS_DATA } from "@/constants/stringConstants";
 
 import {
   getCurrentYear,
@@ -21,8 +21,8 @@ const years = getAllYearsTillCurrentYear();
 const yearsOptions = getYearsOptions({ years });
 
 const initialFormData = {
-  usersJson: [],
-  usersRawText: "",
+  usersJson: MOCK_BIRTHDAYS_DATA,
+  usersRawText: JSON.stringify(MOCK_BIRTHDAYS_DATA),
   selectedYear: getCurrentYear(),
 };
 

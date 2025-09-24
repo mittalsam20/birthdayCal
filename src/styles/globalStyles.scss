@@ -8,21 +8,20 @@
     padding: 0;
     height: 100%;
     overflow: hidden;
-    background-color: $bgWhite;
+    background-color: $bgPrimary;
 
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
-    color: $textDefault;
-    line-height: normal;
-    font-family: Galvji;
-    @include regularFont();
-    @include fontSize(1.4rem);
+    color: $textPrimary;
+    @include fontFamily($fontPrimary);
+    @include textBase();
+    @include fontRegular();
 
     ::selection {
-      color: initial;
-      background: $bgPrimary;
+      color: $textPrimary;
+      background: $primary;
     }
   }
 
@@ -39,7 +38,7 @@
     -webkit-overflow-scrolling: touch;
   }
   #root {
-    background: $bgWhite;
+    background: $bgPrimary;
     height: 100%;
     width: 100%;
   }
@@ -56,10 +55,10 @@
 
 ::-webkit-scrollbar-track {
   border-radius: 8px;
-  background: $bgDarkHover;
+  background: $bgSecondary;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $bgPrimary;
+  background: $primary;
   border-radius: 8px;
 }

@@ -1,6 +1,8 @@
 import React from "react";
+import classNames from "classnames";
 
 import classes from "./DayCard.module.scss";
+import { PokerFaceIcon } from "@/svgComponents";
 import PersonTile from "@BirthdayCal/components/PersonTile";
 
 const getGridDimensions = ({ numberOfTiles }) => {
@@ -20,16 +22,26 @@ const getContainerStyle = ({ numberOfTiles }) => {
 const DayCard = props => {
   const { title = "", persons = [] } = props;
   const numberOfTiles = persons.length;
+  const isEmpty = numberOfTiles === 0;
   const containerStyle = getContainerStyle({ numberOfTiles });
+
+  const bodyContainerClass = classNames({
+    [classes.cardBodyContainer]: true,
+    [classes.cardBodyContainerEmpty]: isEmpty,
+  });
 
   return (
     <div className={classes.container}>
       <div className={classes.title}>{title}</div>
-      <div style={containerStyle} className={classes.cardBodyContainer}>
-        {persons.map(({ name, birthday }, index) => {
-          const key = `${name}-${birthday}-${index}`;
-          return <PersonTile key={key} name={name} birthday={birthday} />;
-        })}
+      <div style={containerStyle} className={bodyContainerClass}>
+        {isEmpty ? (
+          <PokerFaceIcon />
+        ) : (
+          persons.map(({ name, birthday }, index) => {
+            const key = `${name}-${birthday}-${index}`;
+            return <PersonTile key={key} name={name} birthday={birthday} />;
+          })
+        )}
       </div>
     </div>
   );

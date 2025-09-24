@@ -33,6 +33,7 @@ const TextArea = props => {
       inputRef.current.focus();
       autoPaste({ onChange });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoFocus]);
 
   const onFocus = () => {
@@ -67,5 +68,4 @@ const TextArea = props => {
   );
 };
 
-TextArea.displayName = "TextArea";
 export default TextArea;

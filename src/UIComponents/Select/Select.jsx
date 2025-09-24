@@ -13,15 +13,15 @@ const Select = props => {
     ...restProps
   } = props;
 
-  const selectClasses = classNames(classes.select, {
-    [classes.selectDisabled]: isDisabled,
-    [className]: !!className,
-  });
-
   const handleChange = event => {
     const value = event.target.value;
     if (onChange) onChange(value);
   };
+
+  const selectClasses = classNames(classes.select, {
+    [classes.selectDisabled]: isDisabled,
+    [className]: !!className,
+  });
 
   return (
     <select

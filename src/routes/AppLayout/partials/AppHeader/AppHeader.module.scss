@@ -10,7 +10,7 @@
   padding: 0 16px;
   z-index: 100;
   border-radius: 12px;
-  background-color: black;
-  outline: 2px solid $bgPrimary;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  background-color: $bgSecondary;
+  border: 2px solid $borderPrimary;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }

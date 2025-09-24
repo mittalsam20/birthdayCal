@@ -1,26 +1,30 @@
 .select {
-  @include fontSize(1.4rem);
-  @include regularFont();
+  @include textBase();
+  @include fontRegular();
 
   width: fit-content;
   height: fit-content;
   padding: 12px;
-  border: 1px solid $borderSubtle;
-  background-color: $bgWhite;
+  border: 1px solid $borderPrimary;
+  background-color: $bgCard;
   border-radius: 8px;
-  color: $textDefault;
+  color: $textPrimary;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:focus {
     outline: none;
-    border-color: $bgPrimary;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    border-color: $borderFocus;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  }
+
+  &:hover {
+    border-color: $borderSecondary;
   }
 
   option {
     padding: 8px;
-    background-color: $bgWhite;
-    color: $textDefault;
+    background-color: $bgCard;
+    color: $textPrimary;
   }
 }
