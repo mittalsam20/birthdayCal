@@ -19,12 +19,21 @@ const getContainerStyle = ({ numberOfTiles }) => {
   };
 };
 
+const getSortedPersons = ({ persons }) => {
+  return persons.sort((a, b) => {
+    const dateA = new Date(a.birthday);
+    const dateB = new Date(b.birthday);
+    return dateA - dateB;
+  });
+};
+
 const DayCard = props => {
   const { title = "", persons = [] } = props;
   const numberOfTiles = persons.length;
   const isEmpty = numberOfTiles === 0;
   const containerStyle = getContainerStyle({ numberOfTiles });
 
+  const sortedPersons = getSortedPersons({ persons });
   const bodyContainerClass = classNames({
     [classes.cardBodyContainer]: true,
     [classes.cardBodyContainerEmpty]: isEmpty,
@@ -37,7 +46,7 @@ const DayCard = props => {
         {isEmpty ? (
           <PokerFaceIcon />
         ) : (
-          persons.map(({ name, birthday }, index) => {
+          sortedPersons.map(({ name, birthday }, index) => {
             const key = `${name}-${birthday}-${index}`;
             return <PersonTile key={key} name={name} />;
           })

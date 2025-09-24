@@ -26,7 +26,7 @@ const AppHeader = () => {
   return (
     <div className={classes.container}>
       {LINKS.map(({ id, label, path }) => (
-        <Link key={id} to={path}>
+        <Link key={id} to={path} className={classes.link}>
           {label}
         </Link>
       ))}
