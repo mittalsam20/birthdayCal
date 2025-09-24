@@ -1,9 +1,18 @@
-import React, { forwardRef } from "react";
+import React, { useEffect, useRef } from "react";
 import classNames from "classnames";
 
 import classes from "./TextArea.module.scss";
 
-const TextArea = forwardRef((props, ref) => {
+const autoPaste = async ({ onChange }) => {
+  try {
+    const text = await navigator.clipboard.readText();
+    if (text && onChange) onChange(text);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const TextArea = props => {
   const {
     name,
     rows = 4,
@@ -11,10 +20,26 @@ const TextArea = forwardRef((props, ref) => {
     maxLength,
     value = "",
     placeholder = "",
+    autoFocus = true,
     required = false,
     isDisabled = false,
     ...restProps
   } = props;
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (autoFocus && inputRef && inputRef.current) {
+      inputRef.current.focus();
+      autoPaste({ onChange });
+    }
+  }, [autoFocus]);
+
+  const onFocus = () => {
+    if (onFocus) {
+      autoPaste({ onChange });
+    }
+  };
 
   const handleChange = event => {
     if (onChange) onChange(event.target.value);
@@ -26,20 +51,21 @@ const TextArea = forwardRef((props, ref) => {
 
   return (
     <textarea
-      ref={ref}
       name={name}
       rows={rows}
       value={value}
+      ref={inputRef}
       required={required}
+      onFocus={onFocus}
       disabled={isDisabled}
       maxLength={maxLength}
+      className={className}
       onChange={handleChange}
       placeholder={placeholder}
-      className={className}
       {...restProps}
     />
   );
-});
+};
 
 TextArea.displayName = "TextArea";
 export default TextArea;
