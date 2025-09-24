@@ -1,0 +1,42 @@
+.select {
+  @include fontSize(1.4rem);
+  @include regularFont();
+
+  width: fit-content;
+  height: fit-content;
+  padding: 8px;
+  border: 1px solid $borderSubtle;
+  border-radius: 4px;
+  background-color: $bgWhite;
+  color: $textDefault;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $bgPrimary;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $bgDarkSubtle;
+  }
+
+  &:disabled {
+    background-color: $bgDisabled;
+    color: $textDisabled;
+    cursor: not-allowed;
+    border-color: $borderLightSubtle;
+  }
+
+  option {
+    padding: 8px;
+    background-color: $bgWhite;
+    color: $textDefault;
+  }
+
+  option:disabled {
+    color: $textDisabled;
+    font-style: italic;
+  }
+}
