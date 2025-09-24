@@ -1,5 +1,5 @@
 export const ROUTE_PATHS = {
   ROOT: "/",
-  CSS_BATTLE: "css-battle",
+  CSS_BATTLES: "css-battles",
   CATCH_ALL: "*",
 };

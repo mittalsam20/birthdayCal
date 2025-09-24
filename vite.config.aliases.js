@@ -14,5 +14,6 @@ export const aliases = {
   "@appComponents": resolve(__dirname, "src/appComponents"),
   "@svgComponents": resolve(__dirname, "src/svgComponents"),
 
+  "@CssBattles": resolve(__dirname, "src/routes/CssBattles"),
   "@BirthdayCal": resolve(__dirname, "src/routes/BirthdayCal"),
 };

@@ -13,12 +13,12 @@ const LINKS = [
   {
     id: "CSS_BATTLE_1",
     label: "CSS Battle 1",
-    path: `/${ROUTE_PATHS.CSS_BATTLE}/1`,
+    path: `/${ROUTE_PATHS.CSS_BATTLES}/1`,
   },
   {
     id: "CSS_BATTLE_2",
     label: "CSS Battle 2",
-    path: `/${ROUTE_PATHS.CSS_BATTLE}/2`,
+    path: `/${ROUTE_PATHS.CSS_BATTLES}/2`,
   },
 ];
 
