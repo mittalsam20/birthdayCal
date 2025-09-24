@@ -11,6 +11,7 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
     ::selection {
       color: initial;
       background: $bgPrimary;
@@ -24,6 +25,7 @@
     background-color: $bgWhite;
     line-height: normal;
     font-family: Galvji;
+    overflow: hidden;
   }
   *:before,
   *:after {

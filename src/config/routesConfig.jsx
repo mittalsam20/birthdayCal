@@ -1,14 +1,18 @@
-import BirthdayCal from "@/routes/BirthdayCal";
+import { ROUTE_PATHS } from "@/constants/routesConstant";
 
-export const ROUTE_PATHS = {
-  ROOT: "/",
-  CATCH_ALL: "*",
-};
+import AppLayout from "@/routes/AppLayout";
+import BirthdayCal from "@/routes/BirthdayCal";
 
 export const routesConfig = [
   {
     path: ROUTE_PATHS.ROOT,
-    element: <BirthdayCal />,
+    element: <AppLayout />,
+    children: [
+      {
+        index: true,
+        element: <BirthdayCal />,
+      },
+    ],
   },
   {
     path: ROUTE_PATHS.CATCH_ALL,

@@ -1,0 +1,16 @@
+.container {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 80%;
+  height: 60px;
+  padding: 0 20px;
+  z-index: 100;
+  border-radius: 12px;
+  background-color: black;
+  outline: 2px solid $bgPrimary;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}

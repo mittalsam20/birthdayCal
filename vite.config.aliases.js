@@ -2,7 +2,6 @@ import { resolve } from "path";
 
 export const aliases = {
   "@": resolve(__dirname, "src"),
-
   "@utils": resolve(__dirname, "src/utils"),
   "@styles": resolve(__dirname, "src/styles"),
   "@config": resolve(__dirname, "src/config"),
