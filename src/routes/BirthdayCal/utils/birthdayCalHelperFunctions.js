@@ -1,4 +1,8 @@
-import { DAYS } from "@/constants/stringConstants";
+import { DAYS, START_YEAR } from "@/constants/stringConstants";
+
+export const getCurrentYear = () => {
+  return new Date().getFullYear();
+};
 
 export const getBirthdayDayByYear = ({ birthdate, selectedYear }) => {
   const [day, month] = birthdate.split("/").map(str => Number(str));
@@ -6,10 +10,10 @@ export const getBirthdayDayByYear = ({ birthdate, selectedYear }) => {
   return DAYS[date.getDay()];
 };
 
-export const groupPeopleByBirthdayDay = ({ people = [], selectedYear }) => {
-  if (!Array.isArray(people) || !selectedYear) return {};
+export const groupPeopleByBirthdayDay = ({ users = [], selectedYear }) => {
+  if (!Array.isArray(users) || !selectedYear) return {};
 
-  return people.reduce((acc, person) => {
+  return users.reduce((acc, person) => {
     const { name, birthday } = person;
     if (!birthday || !name) return acc;
     try {
@@ -21,4 +25,11 @@ export const groupPeopleByBirthdayDay = ({ people = [], selectedYear }) => {
     }
     return acc;
   }, {});
+};
+
+export const getAllYearsTillCurrentYear = () => {
+  let years = [];
+  const currentYear = getCurrentYear();
+  for (let year = START_YEAR; year <= currentYear; year++) years = [...years, year];
+  return years;
 };

@@ -17,3 +17,19 @@
   background-color: white;
   border-radius: 12px;
 }
+
+.formContainer {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+}
+
+.goButton {
+  width: 100px;
+  height: 40px;
+  background-color: $bgPrimary;
+  color: $textWhite;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
