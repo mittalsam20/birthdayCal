@@ -17,28 +17,44 @@ const getCardTitleFromDay = ({ day }) => {
   return day.slice(0, 3);
 };
 
+const currentYear = getCurrentYear();
 const years = getAllYearsTillCurrentYear();
 const yearsOptions = getYearsOptions({ years });
-
 const initialFormData = {
-  usersJson: MOCK_BIRTHDAYS_DATA,
+  selectedYear: currentYear,
   usersRawText: JSON.stringify(MOCK_BIRTHDAYS_DATA),
-  selectedYear: getCurrentYear(),
+};
+
+const initialProcessedData = {
+  selectedYear: currentYear,
+  usersJson: MOCK_BIRTHDAYS_DATA,
 };
 
 const BirthdayCal = () => {
   const [formData, setFormData] = useState(initialFormData);
-  const { usersRawText, usersJson, selectedYear } = formData;
+  const [processedData, setProcessedData] = useState(initialProcessedData);
+
+  const { usersRawText, selectedYear } = formData;
+  const { usersJson, selectedYear: processedYear } = processedData;
 
   const handleFormData = name => value => {
-    setFormData({ ...formData, [name]: value });
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const onCLickProcess = () => {
-    handleFormData("usersJson")(JSON.parse(usersRawText.trim()));
+  const onClickProcess = () => {
+    try {
+      const parsedUsers = JSON.parse(usersRawText.trim());
+      setProcessedData({ usersJson: parsedUsers, selectedYear });
+      // eslint-disable-next-line no-unused-vars
+    } catch (error) {
+      alert("Invalid JSON format");
+    }
   };
 
-  const personsByBirthdayDay = groupPeopleByBirthdayDay({ users: usersJson, selectedYear });
+  const personsByBirthdayDay = groupPeopleByBirthdayDay({
+    users: usersJson,
+    selectedYear: processedYear,
+  });
 
   return (
     <div className={classes.pageContainer}>
@@ -62,7 +78,7 @@ const BirthdayCal = () => {
           options={yearsOptions}
           onChange={handleFormData("selectedYear")}
         />
-        <button className={classes.goButton} onClick={onCLickProcess}>
+        <button className={classes.startProcessingButton} onClick={onClickProcess}>
           {"Process..!"}
         </button>
       </div>

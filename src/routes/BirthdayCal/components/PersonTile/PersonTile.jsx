@@ -3,8 +3,9 @@ import classes from "./PersonTile.module.scss";
 import { getNameInitials, getColorFromName } from "@utils/HelperFunctions";
 
 const PersonTile = props => {
-  const { name = "", birthday } = props;
+  const { name = "" } = props;
 
+  // will use birthday in tooltip
   const initials = getNameInitials({ fullName: name });
   const backgroundColor = getColorFromName({ name });
 

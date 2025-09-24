@@ -39,7 +39,7 @@ const DayCard = props => {
         ) : (
           persons.map(({ name, birthday }, index) => {
             const key = `${name}-${birthday}-${index}`;
-            return <PersonTile key={key} name={name} birthday={birthday} />;
+            return <PersonTile key={key} name={name} />;
           })
         )}
       </div>

@@ -8,7 +8,7 @@ const autoPaste = async ({ onChange }) => {
     const text = await navigator.clipboard.readText();
     if (text && onChange) onChange(text);
   } catch (error) {
-    console.error(error);
+    console.warn(error);
   }
 };
 

@@ -1,4 +1,7 @@
 import { resolve } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = resolve(fileURLToPath(import.meta.url), "..");
 
 export const aliases = {
   "@": resolve(__dirname, "src"),
