@@ -1,41 +1,35 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 
-import { Box } from "@/UIComponents";
-import { DAYS, MOCK_BIRTHDAYS_DATA } from "@/constants/stringConstants";
+import { TextArea, Select } from "@/UIComponents";
+import { MOCK_BIRTHDAYS_DATA } from "@/constants/stringConstants";
 
 import {
   getCurrentYear,
   getYearsOptions,
-  groupPeopleByBirthdayDay,
   getAllYearsTillCurrentYear,
 } from "./utils/birthdayCalHelperFunctions";
-import DayCard from "./components/DayCard";
-import classes from "./BirthdayCal.module.scss";
-import { TextArea, Select } from "@/UIComponents";
+import DayCardsContainer from "./components/DayCardsContainer";
 
-const getCardTitleFromDay = ({ day }) => {
-  return day.slice(0, 3);
-};
+import classes from "./BirthdayCal.module.scss";
 
 const currentYear = getCurrentYear();
 const years = getAllYearsTillCurrentYear();
 const yearsOptions = getYearsOptions({ years });
+
 const initialFormData = {
   selectedYear: currentYear,
   usersRawText: JSON.stringify(MOCK_BIRTHDAYS_DATA),
 };
 
 const initialProcessedData = {
-  selectedYear: currentYear,
-  usersJson: MOCK_BIRTHDAYS_DATA,
+  processedYear: currentYear,
+  processedUsers: MOCK_BIRTHDAYS_DATA,
 };
 
 const BirthdayCal = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [processedData, setProcessedData] = useState(initialProcessedData);
-
   const { usersRawText, selectedYear } = formData;
-  const { usersJson, selectedYear: processedYear } = processedData;
 
   const handleFormData = useCallback(
     name => value => setFormData(prev => ({ ...prev, [name]: value })),
@@ -45,36 +39,16 @@ const BirthdayCal = () => {
   const onClickProcess = useCallback(() => {
     try {
       const parsedUsers = JSON.parse(usersRawText.trim());
-      setProcessedData({ usersJson: parsedUsers, selectedYear });
+      setProcessedData({ processedUsers: parsedUsers, processedYear: selectedYear });
       // eslint-disable-next-line no-unused-vars
     } catch (error) {
       alert("Invalid JSON format");
     }
   }, [usersRawText, selectedYear]);
 
-  const personsByBirthdayDay = useMemo(
-    () => groupPeopleByBirthdayDay({ users: usersJson, selectedYear: processedYear }),
-    [usersJson, processedYear]
-  );
-
-  const dayCards = useMemo(
-    () =>
-      DAYS.map(day => {
-        const cardTitle = getCardTitleFromDay({ day });
-        const persons = personsByBirthdayDay[day] || [];
-        return { day, cardTitle, persons };
-      }),
-    [personsByBirthdayDay]
-  );
-
   return (
     <div className={classes.pageContainer}>
-      <Box className={classes.dayCardsContainer} isRowAligned={true}>
-        {dayCards.map(({ day, cardTitle, persons }) => (
-          <DayCard key={day} title={cardTitle} persons={persons} />
-        ))}
-      </Box>
-
+      <DayCardsContainer processedData={processedData} />
       <div className={classes.formContainer}>
         <TextArea
           name={"usersRawText"}
