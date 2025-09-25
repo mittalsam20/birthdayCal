@@ -1,6 +1,7 @@
 import { ROUTE_PATHS } from "@/constants/routesConstant";
 
 import AppLayout from "@/routes/AppLayout";
+
 import BirthdayCal from "@BirthdayCal";
 import CssBattle1 from "@CssBattles/cssBattle1";
 import CssBattle2 from "@CssBattles/cssBattle2";

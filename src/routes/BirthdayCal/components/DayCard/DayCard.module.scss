@@ -1,18 +1,11 @@
 .container {
   display: flex;
   flex-direction: column;
-  width: 240px;
-  height: 220px;
-  background-color: $bgWhite;
-  border: 2px solid $borderPrimary;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 260px;
+  height: 208px;
+  background-color: $bgSecondary;
+  border-radius: 4px 4px 0 0;
   overflow: hidden;
-  transition: all 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  }
 }
 
 .title {
@@ -20,11 +13,11 @@
   align-items: center;
   justify-content: flex-end;
   color: $textPrimary;
-  @include textSm();
-  @include fontBold();
-  padding: 12px 8px;
+  @include textLg();
   text-transform: uppercase;
-  background: linear-gradient(135deg, $primary, $primaryLight);
+  padding: 8px 16px;
+  max-height: 44px;
+  background-color: $bgCard;
 }
 
 .cardBodyContainer {
@@ -32,11 +25,13 @@
   display: grid;
   overflow: hidden;
   aspect-ratio: 1/1;
+  border-radius: 0 0 4px 4px;
+  border: 2px solid $borderSecondary;
 }
 
 .cardBodyContainerEmpty {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $bgActive;
+  background-color: $borderPrimary;
 }

@@ -1,51 +1,45 @@
 // GLOBAL STYLES
 @use "./Normalize.scss";
 
-:global {
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    background-color: $bgPrimary;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: $bgPrimary;
 
-    font-synthesis: none;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
-    color: $textPrimary;
-    @include fontFamily($fontPrimary);
-    @include textBase();
-    @include fontRegular();
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  color: $textPrimary;
+  @include textBase();
+  @include fontRegular();
+}
 
-    ::selection {
-      color: $textPrimary;
-      background: $primary;
-    }
-  }
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
 
-  *:before,
-  *:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-overflow-scrolling: touch;
-  }
-  #root {
-    background: $bgPrimary;
-    height: 100%;
-    width: 100%;
-  }
+a {
+  text-decoration: none;
+}
 
-  a {
-    text-decoration: none;
-  }
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 }
 
 ::-webkit-scrollbar {
@@ -55,10 +49,10 @@
 
 ::-webkit-scrollbar-track {
   border-radius: 8px;
-  background: $bgSecondary;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $primary;
+  background: $borderPrimary;
   border-radius: 8px;
 }

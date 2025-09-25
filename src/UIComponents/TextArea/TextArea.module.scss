@@ -1,31 +1,12 @@
 .textArea {
   height: 300px;
   max-height: 300px;
-  min-width: 400px;
+  min-width: 50%;
   @include textSm();
-  color: $textPrimary;
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: 4px;
   border: 2px solid $borderPrimary;
-  background-color: $bgCard;
   transition: all 0.2s ease;
   outline: none;
-  resize: vertical;
-
-  &:focus {
-    border-color: $borderFocus;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-  }
-
-  &:hover {
-    border-color: $borderSecondary;
-  }
-
-  &.textAreaDisabled {
-    background-color: $borderSecondary;
-    border-color: $borderSubtle;
-    color: $textDisabled;
-    cursor: not-allowed;
-    resize: none;
-  }
+  resize: horizontal;
 }

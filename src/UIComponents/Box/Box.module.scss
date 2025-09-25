@@ -4,10 +4,11 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding: 20px 64px 32px 64px;
+  border-radius: 2px;
+  background-color: $bgSecondary;
 }
 
 .rowAligned {
   flex-direction: row;
-  align-items: stretch;
-  justify-content: center;
 }

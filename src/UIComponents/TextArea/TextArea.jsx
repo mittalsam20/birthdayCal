@@ -15,7 +15,7 @@ const autoPaste = async ({ onChange }) => {
 const TextArea = React.memo(props => {
   const {
     name,
-    rows = 4,
+    rows = 8,
     onChange,
     maxLength,
     value = "",
@@ -23,11 +23,12 @@ const TextArea = React.memo(props => {
     autoFocus = true,
     required = false,
     isDisabled = false,
+    className = "",
     ...restProps
   } = props;
 
   const inputRef = useRef(null);
-  const className = classNames(classes.textArea, { [classes.textAreaDisabled]: isDisabled });
+  const textAreaClasses = classNames(classes.textArea, { [className]: !!className });
 
   useEffect(() => {
     if (autoFocus && inputRef && inputRef.current) {
@@ -55,9 +56,9 @@ const TextArea = React.memo(props => {
       onFocus={onFocus}
       disabled={isDisabled}
       maxLength={maxLength}
-      className={className}
       onChange={handleChange}
       placeholder={placeholder}
+      className={textAreaClasses}
       {...restProps}
     />
   );

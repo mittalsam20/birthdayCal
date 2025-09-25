@@ -1,30 +1,17 @@
 .select {
   @include textBase();
   @include fontRegular();
-
   width: fit-content;
   height: fit-content;
   padding: 12px;
-  border: 1px solid $borderPrimary;
-  background-color: $bgCard;
-  border-radius: 8px;
-  color: $textPrimary;
   cursor: pointer;
+  border-radius: 8px;
   transition: all 0.2s ease;
+  border: 2px solid $borderPrimary;
+  outline: none;
 
   &:focus {
     outline: none;
-    border-color: $borderFocus;
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-  }
-
-  &:hover {
-    border-color: $borderSecondary;
-  }
-
-  option {
-    padding: 8px;
-    background-color: $bgCard;
-    color: $textPrimary;
+    border: 2px solid $borderInput;
   }
 }
