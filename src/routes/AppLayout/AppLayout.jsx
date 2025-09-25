@@ -11,6 +11,7 @@ const AppLayout = React.memo(() => {
       <div className={classes.appOutletContainer}>
         <Outlet />
       </div>
+      <div className={classes.footerDivider} />
     </div>
   );
 });
