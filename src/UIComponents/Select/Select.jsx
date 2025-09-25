@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import classes from "./Select.module.scss";
 
-const Select = props => {
+const Select = React.memo(props => {
   const {
     value = "",
     options = [],
@@ -19,8 +19,8 @@ const Select = props => {
   };
 
   const selectClasses = classNames(classes.select, {
-    [classes.selectDisabled]: isDisabled,
     [className]: !!className,
+    [classes.selectDisabled]: isDisabled,
   });
 
   return (
@@ -38,6 +38,7 @@ const Select = props => {
       ))}
     </select>
   );
-};
+});
 
+Select.displayName = "Select";
 export default Select;

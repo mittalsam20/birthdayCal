@@ -22,7 +22,7 @@ const LINKS = [
   },
 ];
 
-const AppHeader = () => {
+const AppHeader = React.memo(() => {
   return (
     <div className={classes.container}>
       {LINKS.map(({ id, label, path }) => (
@@ -32,6 +32,7 @@ const AppHeader = () => {
       ))}
     </div>
   );
-};
+});
 
+AppHeader.displayName = "AppHeader";
 export default AppHeader;

@@ -12,7 +12,7 @@ const autoPaste = async ({ onChange }) => {
   }
 };
 
-const TextArea = props => {
+const TextArea = React.memo(props => {
   const {
     name,
     rows = 4,
@@ -27,6 +27,7 @@ const TextArea = props => {
   } = props;
 
   const inputRef = useRef(null);
+  const className = classNames(classes.textArea, { [classes.textAreaDisabled]: isDisabled });
 
   useEffect(() => {
     if (autoFocus && inputRef && inputRef.current) {
@@ -37,18 +38,12 @@ const TextArea = props => {
   }, [autoFocus]);
 
   const onFocus = () => {
-    if (onFocus) {
-      autoPaste({ onChange });
-    }
+    if (onFocus) autoPaste({ onChange });
   };
 
   const handleChange = event => {
     if (onChange) onChange(event.target.value);
   };
-
-  const className = classNames(classes.textArea, {
-    [classes.textAreaDisabled]: isDisabled,
-  });
 
   return (
     <textarea
@@ -66,6 +61,7 @@ const TextArea = props => {
       {...restProps}
     />
   );
-};
+});
 
+TextArea.displayName = "TextArea";
 export default TextArea;

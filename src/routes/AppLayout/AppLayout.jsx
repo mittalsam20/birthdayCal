@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 import classes from "./AppLayout.module.scss";
 import AppHeader from "./partials/AppHeader";
 
-const AppLayout = () => {
+const AppLayout = React.memo(() => {
   return (
     <div className={classes.container}>
       <AppHeader />
@@ -13,6 +13,7 @@ const AppLayout = () => {
       </div>
     </div>
   );
-};
+});
 
+AppLayout.displayName = "AppLayout";
 export default AppLayout;

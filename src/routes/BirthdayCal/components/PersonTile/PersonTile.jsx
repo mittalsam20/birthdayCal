@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import classes from "./PersonTile.module.scss";
 import { getNameInitials, getColorFromName } from "@utils/HelperFunctions";
 
-const PersonTile = props => {
+const PersonTile = React.memo(props => {
   const { name = "" } = props;
 
   const initials = useMemo(() => getNameInitials({ fullName: name }), [name]);
@@ -13,6 +13,7 @@ const PersonTile = props => {
       {initials}
     </div>
   );
-};
+});
 
+PersonTile.displayName = "PersonTile";
 export default PersonTile;

@@ -1,11 +1,12 @@
 import React from "react";
 
 const PokerFaceIcon = React.memo(props => {
+  const { width = 52 } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={52}
-      height={52}
+      width={width}
+      height={width}
       fill="none"
       stroke="currentColor"
       strokeLinecap="round"
