@@ -5,7 +5,6 @@ import BirthdayCal from "@BirthdayCal";
 import CssBattle1 from "@CssBattles/cssBattle1";
 import CssBattle2 from "@CssBattles/cssBattle2";
 
-console.log(ROUTE_PATHS);
 export const routesConfig = [
   {
     path: ROUTE_PATHS.ROOT,
