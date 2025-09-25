@@ -103,9 +103,6 @@ $lineHeightLoose: 2;
 }
 
 // Font Weight Mixins
-@mixin fontLight {
-  @include fontWeight($fontWeightLight);
-}
 
 @mixin fontRegular {
   @include fontWeight($fontWeightRegular);
@@ -125,28 +122,4 @@ $lineHeightLoose: 2;
 
 @mixin fontExtraBold {
   @include fontWeight($fontWeightExtraBold);
-}
-
-// Legacy Compatibility
-$fontScalingFactor: 1; // Updated to 1 for better readability
-
-@mixin abel {
-  @include fontFamily($fontPrimary);
-}
-
-// Deprecated mixins (kept for compatibility)
-@mixin regularFont {
-  @include fontRegular;
-}
-
-@mixin mediumFont {
-  @include fontMedium;
-}
-
-@mixin demiBoldFont {
-  @include fontSemiBold;
-}
-
-@mixin boldFont {
-  @include fontBold;
 }
