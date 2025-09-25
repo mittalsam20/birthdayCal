@@ -56,14 +56,18 @@ const BirthdayCal = () => {
           placeholder={"Paste users data"}
           onChange={handleFormData("usersRawText")}
         />
-        <Select
-          value={selectedYear}
-          options={yearsOptions}
-          onChange={handleFormData("selectedYear")}
-        />
-        <button className={classes.startProcessingButton} onClick={onClickProcess}>
-          {"Process..!"}
-        </button>
+
+        <div className={classes.buttonsContainer}>
+          <Select
+            label={"Year"}
+            value={selectedYear}
+            options={yearsOptions}
+            onChange={handleFormData("selectedYear")}
+          />
+          <button className={classes.startProcessingButton} onClick={onClickProcess}>
+            {"Process..!"}
+          </button>
+        </div>
       </div>
     </div>
   );

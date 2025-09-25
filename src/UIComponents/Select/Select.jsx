@@ -6,6 +6,7 @@ import classes from "./Select.module.scss";
 const Select = React.memo(props => {
   const {
     value = "",
+    label = null,
     options = [],
     className = "",
     isDisabled = false,
@@ -24,19 +25,22 @@ const Select = React.memo(props => {
   });
 
   return (
-    <select
-      value={value}
-      disabled={isDisabled}
-      onChange={handleChange}
-      className={selectClasses}
-      {...restProps}
-    >
-      {options.map(({ value, label }, index) => (
-        <option key={index} value={value}>
-          {label}
-        </option>
-      ))}
-    </select>
+    <div className={classes.selectContainer}>
+      {label && <>{label}</>}
+      <select
+        value={value}
+        disabled={isDisabled}
+        onChange={handleChange}
+        className={selectClasses}
+        {...restProps}
+      >
+        {options.map(({ value, label }, index) => (
+          <option key={index} value={value}>
+            {label}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 });
 

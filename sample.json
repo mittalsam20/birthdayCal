@@ -9,7 +9,6 @@
   { "name": "John Miller", "birthday": "1989/06/14" },
   { "name": "Bob Smith", "birthday": "1993/08/25" },
   { "name": "Mike Taylor", "birthday": "1986/02/11" },
-  { "name": "Emma Smith", "birthday": "1994/10/07" },
   { "name": "Robert Brown", "birthday": "1990/01/20" },
   { "name": "Dan Nelson", "birthday": "1988/09/16" },
   { "name": "John Smith", "birthday": "1987/03/28" },
@@ -20,8 +19,7 @@
   { "name": "David Smith", "birthday": "1993/04/09" },
   { "name": "Sam Smith", "birthday": "1988/06/15" },
   { "name": "Sam Clark", "birthday": "1990/08/27" },
-  { "name": "Robert Smith", "birthday": "1987/01/31" },
   { "name": "Kevin Davis", "birthday": "1994/03/12" },
-  { "name": "John Lee", "birthday": "1985/10/05" },
+  { "name": "Samaksh Mittal", "birthday": "2000/10/03" },
   { "name": "Victor Taylor", "birthday": "1992/12/18" }
 ]

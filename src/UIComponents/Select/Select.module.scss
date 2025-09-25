@@ -1,3 +1,12 @@
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: $textTertiary;
+  @include textBase();
+  @include fontBold();
+}
+
 .select {
   @include textBase();
   @include fontRegular();
